@@ -86,4 +86,43 @@ zeebe:
     #
     # These setting can also be overridden using the environment variables "ZEEBE_BROKER_EXPORTERS_ELASTICSEARCH_..."
     #
-   
+    exporters:
+      elasticsearch:
+        className: io.camunda.zeebe.exporter.ElasticsearchExporter
+
+        args:
+          url: http://elasticsearch:9200
+
+          bulk:
+            delay: 5
+            size: 1000
+
+          # authentication:
+          #   username: elastic
+          #   password: changeme
+
+          index:
+            prefix: zeebe-record
+            createTemplate: true
+
+            command: false
+            event: true
+            rejection: false
+
+            deployment: true
+            error: true
+            incident: true
+            job: true
+            jobBatch: false
+            message: false
+            messageSubscription: false
+            variable: true
+            variableDocument: true
+            workflowInstance: true
+            workflowInstanceCreation: false
+            workflowInstanceSubscription: false
+
+            ignoreVariablesAbove: 32677
+      hazelcast:
+        className: io.zeebe.hazelcast.exporter.HazelcastExporter
+        jarPath: exporters/zeebe-hazelcast-exporter-1.0.0.jar
