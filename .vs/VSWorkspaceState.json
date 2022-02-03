@@ -1,0 +1,12 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\Zeebe",
+    "\\Zeebe\\docker-compose",
+    "\\Zeebe\\lib",
+    "\\Zeebe\\lib\\application.yml",
+    "\\Zeebe\\lib\\zeebe-hazelcast-exporter-1.0.0.jar"
+  ],
+  "SelectedNode": "\\Zeebe\\docker-compose\\docker-compose.yml",
+  "PreviewInSolutionExplorer": false
+}
