@@ -86,7 +86,6 @@ services:
      ports:
        - "9201:5601"
      environment:
-     - server_host= 127.0.0.1
      - elasticsearch.url="http://elasticsearch:9200"
      networks:
        - zeebe_network
