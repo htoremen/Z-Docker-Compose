@@ -24,34 +24,34 @@ services:
     networks:
       - zeebe_network
       
-  zeebe-tasklist:
-    container_name: camunda-zeebe-tasklist
-    image: camunda/zeebe-simple-tasklist:latest
-    environment:
-      - zeebe.client.broker.contactPoint=zeebe:26500
-      - zeebe.client.worker.hazelcast.connection=zeebe:5701
-    ports:
-      - "8081:8081"
-    depends_on:
-      - zeebe
-    networks:
-      - zeebe_network
+  #zeebe-tasklist:
+  #  container_name: camunda-zeebe-tasklist
+  #  image: camunda/zeebe-simple-tasklist:latest
+  #  environment:
+  #    - zeebe.client.broker.contactPoint=zeebe:26500
+  #    - zeebe.client.worker.hazelcast.connection=zeebe:5701
+  #  ports:
+  #    - "8081:8081"
+  #  depends_on:
+  #    - zeebe
+  #  networks:
+  #    - zeebe_network
 
-  monitor:
-    container_name: camunda-zeebe_monitor
-    restart: always
-    image: ghcr.io/camunda-community-hub/zeebe-simple-monitor:2.0.0
-    environment:
-      - zeebe.client.broker.contactPoint=zeebe:26500
-      - zeebe.client.worker.hazelcast.connection=zeebe:5701
-    volumes:
-      - ./application.yaml:/application.yaml
-    ports:
-      - "8082:8082"
-    depends_on:
-      - zeebe
-    networks:
-      - zeebe_network
+  #monitor:
+  #  container_name: camunda-zeebe_monitor
+  #  restart: always
+  #  image: ghcr.io/camunda-community-hub/zeebe-simple-monitor:2.0.0
+  #  environment:
+  #    - zeebe.client.broker.contactPoint=zeebe:26500
+  #    - zeebe.client.worker.hazelcast.connection=zeebe:5701
+  #  volumes:
+  #    - ./application.yaml:/application.yaml
+  #  ports:
+  #    - "8082:8082"
+  #  depends_on:
+  #    - zeebe
+  #  networks:
+  #    - zeebe_network
 
   operate:
     container_name: camunda-operate
@@ -80,26 +80,26 @@ services:
     networks:
       - zeebe_network
 
-  kibana:
-     container_name: camunda-kibana
-     image: docker.elastic.co/kibana/kibana-oss:6.7.1
-     ports:
-       - "9201:5601"
-     environment:
-     - elasticsearch.url="http://elasticsearch:9200"
-     networks:
-       - zeebe_network
+  #kibana:
+  #   container_name: camunda-kibana
+  #   image: docker.elastic.co/kibana/kibana-oss:6.7.1
+  #   ports:
+  #     - "9201:5601"
+  #   environment:
+  #   - elasticsearch.url="http://elasticsearch:9200"
+  #   networks:
+  #     - zeebe_network
        
-  postgres:
-        container_name: camunda-postgres
-        image: postgres:latest
-        restart: always
-        environment: 
-          - POSTGRES_USER=postgres
-          - POSTGRES_PASSWORD=postgres
-        logging:
-          options:
-            max-size: 10m
-            max-file: "3"
-        ports:
-          - '5432:5432'
+  #postgres:
+  #      container_name: camunda-postgres
+  #      image: postgres:latest
+  #      restart: always
+  #      environment: 
+  #        - POSTGRES_USER=postgres
+  #        - POSTGRES_PASSWORD=postgres
+  #      logging:
+  #        options:
+  #          max-size: 10m
+  #          max-file: "3"
+  #      ports:
+  #        - '5432:5432'
