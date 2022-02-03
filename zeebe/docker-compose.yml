@@ -88,8 +88,8 @@ services:
        - ELASTICSEARCH_HOSTS="http://elasticsearch:9200"
      ports:
        - "5601:5601"
-     #depends_on:
-     # - elasticsearch
+     depends_on:
+      - elasticsearch
      networks:
        - zeebe_network
        
