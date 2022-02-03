@@ -24,18 +24,18 @@ services:
     networks:
       - zeebe_network
       
-  #zeebe-tasklist:
-  #  container_name: camunda-zeebe-tasklist
-  #  image: camunda/zeebe-simple-tasklist:latest
-  #  environment:
-  #    - zeebe.client.broker.contactPoint=zeebe:26500
-  #    - zeebe.client.worker.hazelcast.connection=zeebe:5701
-  #  ports:
-  #    - "8081:8081"
-  #  depends_on:
-  #    - zeebe
-  #  networks:
-  #    - zeebe_network
+  zeebe-tasklist:
+    container_name: camunda-zeebe-tasklist
+    image: camunda/zeebe-simple-tasklist:latest
+    environment:
+      - zeebe.client.broker.contactPoint=zeebe:26500
+      - zeebe.client.worker.hazelcast.connection=zeebe:5701
+    ports:
+      - "8081:8081"
+    depends_on:
+      - zeebe
+    networks:
+      - zeebe_network
 
   #monitor:
   #  container_name: camunda-zeebe_monitor
@@ -80,15 +80,15 @@ services:
     networks:
       - zeebe_network
 
-  #kibana:
-  #   container_name: camunda-kibana
-  #   image: docker.elastic.co/kibana/kibana-oss:6.7.1
-  #   ports:
-  #     - "9201:5601"
-  #   environment:
-  #   - elasticsearch.url="http://elasticsearch:9200"
-  #   networks:
-  #     - zeebe_network
+  kibana:
+     container_name: camunda-kibana
+     image: docker.elastic.co/kibana/kibana-oss:6.7.1
+     ports:
+       - "9201:5601"
+     environment:
+     - elasticsearch.url="http://elasticsearch:9200"
+     networks:
+       - zeebe_network
        
   #postgres:
   #      container_name: camunda-postgres
