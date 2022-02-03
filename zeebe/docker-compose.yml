@@ -24,18 +24,18 @@ services:
     networks:
       - zeebe_network
       
-  #zeebe-tasklist:
-  #  container_name: camunda-zeebe-tasklist
-  #  image: camunda/zeebe-simple-tasklist:latest
-  #  environment:
-  #    - zeebe.client.broker.contactPoint=zeebe:26500
-  #    - zeebe.client.worker.hazelcast.connection=zeebe:5701
-  #  ports:
-  #    - "8081:8081"
-  #  depends_on:
-  #    - zeebe
-  #  networks:
-  #    - zeebe_network
+  zeebe-tasklist:
+    container_name: camunda-zeebe-tasklist
+    image: camunda/zeebe-simple-tasklist:latest
+    environment:
+      - zeebe.client.broker.contactPoint=zeebe:26500
+      - zeebe.client.worker.hazelcast.connection=zeebe:5701
+    ports:
+      - "8081:8081"
+    depends_on:
+      - zeebe
+    networks:
+      - zeebe_network
 
   #monitor:
   #  container_name: camunda-zeebe_monitor
