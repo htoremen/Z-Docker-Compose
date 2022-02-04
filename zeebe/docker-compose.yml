@@ -93,16 +93,16 @@ services:
      networks:
        - zeebe_network
        
-  #postgres:
-  #      container_name: camunda-postgres
-  #      image: postgres:latest
-  #      restart: always
-  #      environment: 
-  #        - POSTGRES_USER=postgres
-  #        - POSTGRES_PASSWORD=postgres
-  #      logging:
-  #        options:
-  #          max-size: 10m
-  #          max-file: "3"
-  #      ports:
-  #        - '5432:5432'
+  postgres:
+     container_name: camunda-postgres
+     image: postgres:latest
+     restart: always
+     environment: 
+       - POSTGRES_USER=postgres
+       - POSTGRES_PASSWORD=postgres
+     logging:
+        options:
+          max-size: 10m
+          max-file: "3"
+     ports:
+       - '5432:5432'
