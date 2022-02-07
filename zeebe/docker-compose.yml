@@ -56,7 +56,7 @@ services:
     container_name: operate
     image: camunda/operate:1.1.0
     ports:
-      - "8083:8080"
+      - "8080:8080"
     depends_on:
       - zeebe
       - elasticsearch
