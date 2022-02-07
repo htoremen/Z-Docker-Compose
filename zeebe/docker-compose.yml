@@ -68,29 +68,38 @@ services:
   elasticsearch:
     container_name: elasticsearch
     image: docker.elastic.co/elasticsearch/elasticsearch-oss:7.10.2
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
     ports:
       - "9200:9200"
+      - "9300:9300"
     environment:
+      - bootstrap.memory_lock=true
       - discovery.type=single-node
       - cluster.name=elasticsearch
       - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+      - cluster.routing.allocation.disk.threshold_enabled=false
+      - ELASTIC_PASSWORD=$ELASTIC_PASSWORD
+      - xpack.security.enabled=$ELASTIC_SECURITY
     volumes:
       - zeebe_elasticsearch_data:/usr/share/elasticsearch/data
     networks:
       - zeebe_network
 
-  #kibana:
-  #   container_name: camunda-kibana
-  #   image: docker.elastic.co/kibana/kibana-oss:7.10.2
-  #   environment:
-  #     - ELASTICSEARCH_URL="http://elasticsearch:9200"
-  #     - ELASTICSEARCH_HOSTS="http://elasticsearch:9200"
-  #   ports:
-  #     - "5601:5601"
-  #   depends_on:
-  #    - elasticsearch
-  #   networks:
-  #     - zeebe_network
+  kibana:
+     container_name: camunda-kibana
+     image: docker.elastic.co/kibana/kibana-oss:7.10.2
+     environment:
+       - ELASTICSEARCH_URL="http://elasticsearch:9200"
+       - ELASTICSEARCH_HOSTS="http://elasticsearch:9200"
+     ports:
+       - "5601:5601"
+     depends_on:
+      - elasticsearch
+     networks:
+       - zeebe_network
        
   #postgres:
   #   container_name: camunda-postgres
