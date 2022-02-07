@@ -1,8 +1,8 @@
 {
   "ExpandedNodes": [
     "",
-    "\\zeebe"
+    "\\zeebe",
+    "\\zeebe\\lib"
   ],
-  "SelectedNode": "\\zeebe\\docker-compose.yml",
   "PreviewInSolutionExplorer": false
 }
