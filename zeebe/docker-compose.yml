@@ -59,38 +59,38 @@ services:
       - "8083:8080"
     depends_on:
       - zeebe
-      - elasticsearch
+     # - elasticsearch
     volumes:
       - ./lib/application.yml:/usr/local/operate/config/application.yml
     networks:
       - zeebe_network
 
-  elasticsearch:
-    container_name: elasticsearch
-    image: docker.elastic.co/elasticsearch/elasticsearch-oss:7.10.2
-    ports:
-      - "9200:9200"
-    environment:
-      - discovery.type=single-node
-      - cluster.name=elasticsearch
-      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
-    volumes:
-      - zeebe_elasticsearch_data:/usr/share/elasticsearch/data
-    networks:
-      - zeebe_network
+  #elasticsearch:
+  #  container_name: elasticsearch
+  #  image: docker.elastic.co/elasticsearch/elasticsearch-oss:7.10.2
+  #  ports:
+  #    - "9200:9200"
+  #  environment:
+  #    - discovery.type=single-node
+  #    - cluster.name=elasticsearch
+  #    - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+  #  volumes:
+  #    - zeebe_elasticsearch_data:/usr/share/elasticsearch/data
+  #  networks:
+  #    - zeebe_network
 
-  kibana:
-     container_name: camunda-kibana
-     image: docker.elastic.co/kibana/kibana-oss:7.10.2
-     environment:
-       - ELASTICSEARCH_URL="http://elasticsearch:9200"
-       - ELASTICSEARCH_HOSTS="http://elasticsearch:9200"
-     ports:
-       - "5601:5601"
-     depends_on:
-      - elasticsearch
-     networks:
-       - zeebe_network
+  #kibana:
+  #   container_name: camunda-kibana
+  #   image: docker.elastic.co/kibana/kibana-oss:7.10.2
+  #   environment:
+  #     - ELASTICSEARCH_URL="http://elasticsearch:9200"
+  #     - ELASTICSEARCH_HOSTS="http://elasticsearch:9200"
+  #   ports:
+  #     - "5601:5601"
+  #   depends_on:
+  #    - elasticsearch
+  #   networks:
+  #     - zeebe_network
        
   #postgres:
   #   container_name: camunda-postgres
