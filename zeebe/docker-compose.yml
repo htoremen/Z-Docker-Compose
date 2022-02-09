@@ -57,7 +57,7 @@ services:
     container_name: camunda-operate
     image: camunda/operate:1.1.0
     ports:
-      - "8080:8080"
+      - "8085:8080"
     depends_on:
       - zeebe
       - elasticsearch
@@ -102,16 +102,16 @@ services:
      networks:
        - zeebe_network
        
-  postgres:
-     container_name: camunda-postgres
-     image: postgres:latest
-     restart: always
-     environment: 
-       - POSTGRES_USER=postgres
-       - POSTGRES_PASSWORD=postgres
-     logging:
-        options:
-          max-size: 10m
-          max-file: "3"
-     ports:
-        - '5432:5432'
+  #postgres:
+  #   container_name: camunda-postgres
+  #   image: postgres:latest
+  #   restart: always
+  #   environment: 
+  #     - POSTGRES_USER=postgres
+  #     - POSTGRES_PASSWORD=postgres
+  #   logging:
+  #      options:
+  #        max-size: 10m
+  #        max-file: "3"
+  #   ports:
+  #      - '5432:5432'

@@ -2,7 +2,9 @@
   "ExpandedNodes": [
     "",
     "\\zeebe",
+    "\\zeebe\\bpmn",
     "\\zeebe\\lib"
   ],
+  "SelectedNode": "\\zeebe\\bpmn",
   "PreviewInSolutionExplorer": false
 }
